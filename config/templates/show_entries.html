@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% for entry in entries %}
+    <div class='entries'>
+    <span class='case'>Testfall {{ entry.usecase }} - </span>
+    {% if entry.report %}
+      <span class='diff'>{{ entry.result }}</span> (<a href={{ entry.report }} target=_blank><img src="pdf.png" height=16 /> {{ entry.report }}</a>)
+    {% else %}
+      <span class='ok'>{{ entry.result }}</span>
+    {% endif %}
+    </div>
+  {% else %}
+    <em>Unbelievable.  No entries created...</em>
+  {% endfor %}
+{% endblock %}
